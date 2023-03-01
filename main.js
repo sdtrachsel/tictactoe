@@ -1,57 +1,56 @@
 // Query Selectors
-var gameStatusHeader = document.getElementById('gamestatus')
+var gameStatusHeader = document.getElementById('gameStatus')
+var playerTurnIcon = document.getElementById('turnIcon')
 var playerOneWins = document.getElementById('pOneWins')
 var playerTwoWins = document.getElementById('pTwoWins')
 
 var gameBoard = document.getElementById('gameBoard')
-var topLeft = document.getElementById('space0')
-var topCenter = document.getElementById('space1')
-var topRight = document.getElementById('space2')
 
-var middleLeft = document.getElementById('space3')
-var middleCenter = document.getElementById('space4')
-var middleRight = document.getElementById('space5')
-
-var bottomLeft = document.getElementById('space6')
-var bottomCenter = document.getElementById('space7')
-var bottomRight = document.getElementById('space8')
 
 // Eventlisteners
-/// upon load create 2 players and start a new game
 gameBoard.addEventListener('click', placeToken)
+
 // Variables
-var gameRound = new Game (
-    new Player("one", "./assets/badger.png"), 
-    new Player("two","./assets/blowfish.png"))
+var gameRound = new Game(new Player("one", "./assets/badger.png","player one icon badger"), new Player("two", "./assets/blowfish.png", "player two icon blowfish"))
 
 
 // Event Handlers
 
 
-function placeToken(){
-    // dom hears click on space
-    //dom hears click on ancestor
-    //ancestor gives ID
-//***** token being placed outside of board */
-   var selectedBoardSpace =event.target.id
-    var boardSpaceLoc = Number(selectedBoardSpace.charAt(selectedBoardSpace.length - 1))
+function placeToken() {
+	if (event.target.classList.contains("board-space")) {
+// Place token
+	//data model		
+		var selectedBoardSpace = event.target.id
+		gameRound.gameBoard[Number(selectedBoardSpace)] = gameRound.currentPlayer
 
+	//dom 
+		var tokenElement = document.createElement('img')
+		tokenElement.src = gameRound.currentPlayer.token
+		tokenElement.alt = gameRound.currentPlayer.altText
+		event.target.appendChild(tokenElement)
 
-    //Use Id to add player info to gameboard array
-    gameRound.gameBoard[boardSpaceLoc]= gameRound.currentPlayerTurn
- 
-    //diplay on gameboard
-//******Pullout of handler when refactor? */
-    var tokenNode = document.createElement('img')
-    tokenNode.src = gameRound.currentPlayerTurn.token
-    event.target.appendChild(tokenNode)
+// Check for winner 
+	// data model
+		if(gameRound.checkWin()){
+			if(gameRound.currentPlayer.id.includes('one')){
+				gameRound.playerOne.wins++;
 
-    gameRound.checkWin()
-    // Change turn
-//*****Need to update DOM gameStatus to reflect change*/
-    gameRound.changeTurn()
+				gameStatusHeader.innerHTML = `
+				<img class="winner-icon" src=${gameRound.playerOne.token} alt=${gameRound.playerOne.altText}> won!
+				`
+				} else {
+				gameRound.playerTwo.wins++
+			}
+		} else {
+	//Change Turn 
+	//DataModel
+		gameRound.changeTurn()
+	//DOM
+		playerTurnIcon.src = gameRound.currentPlayer.token
+		}
 
-    
+	}
 }
 
 

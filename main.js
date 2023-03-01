@@ -20,7 +20,7 @@ var bottomRight = document.getElementById('space8')
 /// upon load create 2 players and start a new game
 gameBoard.addEventListener('click', placeToken)
 // Variables
-var currentRound = new Game (
+var gameRound = new Game (
     new Player("one", "./assets/badger.png"), 
     new Player("two","./assets/blowfish.png"))
 
@@ -32,21 +32,26 @@ function placeToken(){
     // dom hears click on space
     //dom hears click on ancestor
     //ancestor gives ID
+//***** token being placed outside of board */
    var selectedBoardSpace =event.target.id
     var boardSpaceLoc = Number(selectedBoardSpace.charAt(selectedBoardSpace.length - 1))
 
 
     //Use Id to add player info to gameboard array
-    currentRound.currentGameBoard[boardSpaceLoc]= currentRound.currentPlayerTurn
-
+    gameRound.gameBoard[boardSpaceLoc]= gameRound.currentPlayerTurn
+ 
     //diplay on gameboard
 //******Pullout of handler when refactor? */
     var tokenNode = document.createElement('img')
-    tokenNode.src = currentRound.currentPlayerTurn.token
+    tokenNode.src = gameRound.currentPlayerTurn.token
     event.target.appendChild(tokenNode)
 
+    gameRound.checkWin()
     // Change turn
-    currentRound.changeTurn()
+//*****Need to update DOM gameStatus to reflect change*/
+    gameRound.changeTurn()
+
+    
 }
 
 

@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="./styles.css">
-		<title>Tic-Tac-Toe</title>
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./styles.css">
+	<title>Tic-Tac-Toe</title>
+</head>
 
-	<body>
-		<header>
-			<section class="pone-section">
-				<img class="pone-icon" id="pOneIcon">
-				<p class="pone-wins" id="pOneWins">0 Wins</p>
-			</section>
-
-			<section class="game-status" id="gameStatus">game Status</section>
-			<section class="ptwo-section">
-				<img class="ptwo-icon" id="pTwpIcon">
-				<p class="ptwo-wins" id="pTwoWins">0 Wins</p>
-			</section>
-		</header>
-
-		<section class="game-board">
-			<div class="tl-space" id="tlSpace"></div>
-			<div class="tc-space" id="tcSpace"></div>
-			<div class="tr-space" id="trSpace"></div>
-
-			<div class="ml-space" id="mlSpace"></div>
-			<div class="mc-space" id="mcSpace"></div>
-			<div class="mr-space" id="mrSpace"></div>
-
-			<div class="bl-space" id="blSpace"></div>
-			<div class="bc-space" id="bcSpace"></div>
-			<div class="br-space" id="brSpace"></div>
-
-
+<body>
+	<header>
+		<section class="pone-section">
+			<img class="pone-icon" src="./assets/badger.png" id="pOneIcon" alt="player one icon badger">
+			<p class="pone-wins" id="pOneWins">0 Wins</p>
 		</section>
-		<script src="./game.js"></script>
-		<script src="./player.js"></script>
-		<script src="./main.js"></script>
-	</body>
+
+		<section class="game-status" id="gameStatus">game Status</section>
+
+		<section class="ptwo-section">
+			<img class="ptwo-icon" src="./assets/blowfish.png" id="pTwpIcon" alt="player two icon">
+			<p class="ptwo-wins" id="pTwoWins">0 Wins</p>
+		</section>
+	</header>
+
+	<section class="game-board" id ="gameBoard">
+		<div class="board-row">
+			<div class="board-space" id="tlSpace">0</div>
+			<div class="board-space" id="tcSpace">1</div>
+			<div class="board-space" id="trSpace">2</div>
+		</div>	
+		<div class="board-row">		
+			<div class="board-space" id="mlSpace">3</div>
+			<div class="board-space" id="mcSpace">4</div>
+			<div class="board-space" id="mrSpace">5</div>
+		</div>	
+		<div class="board-row">	
+			<div class="board-space" id="blSpace">6</div>
+			<div class="board-space" id="bcSpace">7</div>
+			<div class="board-space" id="brSpace">8</div>
+		</div>
+
+	</section>
+	<script src="./game.js"></script>
+	<script src="./player.js"></script>
+	<script src="./main.js"></script>
+</body>
 
 </html>

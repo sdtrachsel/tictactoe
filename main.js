@@ -19,5 +19,12 @@ var bottomRight = document.getElementById('brSpace')
 /// upon load create 2 players and start a new game
 
 // Variables
+var currentRound = new Game (new Player(one,"./assets/badger.png"), new Player(two,"./assets/blowfish.png"))
+
 
 // Event Handlers
+
+
+////// player one places pice on gameboard
+//      1. position is read on and pushed into currentGameboard based on location
+//// switches to player two

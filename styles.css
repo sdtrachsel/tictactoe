@@ -1,0 +1,32 @@
+* {
+    border: 2px red solid
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+header {
+    display: flex;
+}
+
+.game-board {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 60%;
+    height: 60%;
+}
+
+.board-row {
+    width: 100%;
+    height: 100%;
+    display:flex;
+}
+
+.board-space {
+    height: 100px;
+    width: 100px;
+}
+

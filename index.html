@@ -1,33 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Tic-Tac-Toe</title>
-    </head>
-  <body> 
-    <header>
-      <section class="left-player">
-        <img class="lp-icon" id="lPIcon">
-        <p class="lp-wins" id="lPWins">0 Wins</p>
-      </section>
-      <section class ="game-status" id="gameStatus">game Status</section>
-      <section class="right-player">
-        <img class="rp-icon" id="rPIcon">
-        <p class="rp-wins" id="rPWins">0 Wins</p>
-      </section>
-    </header> 
-    <section class="game-board">
-      <div class="tr-space" id="tRSpace"></div>
-      <div class="tc-space" id="tCSpace"></div>
-      <div class="tl-space" id="tLSpace"></div>
-      <div class="mr-space" id="mRSpace"></div>
-      <div class="mc-space" id="mCSpace"></div>
-      <div class="ml-space" id="mLSpace"></div>
-      <div class="br-space" id="bRSpace"></div>
-      <div class="bc-space" id="bCSpace"></div>
-      <div class="bl-space" id="bLSpace"></div>
-      <div></div>
-    </section>
-    </body>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./styles.css">
+	<title>Tic-Tac-Toe</title>
+</head>
+
+<body>
+	<header>
+		<section class="pone-section">
+			<img class="pone-icon" src="./assets/badger.png" id="pOneIcon" alt="player one icon badger">
+			<p class="pone-wins" id="pOneWins">0 Wins</p>
+		</section>
+
+		<section class="game-status" id="gameStatus">game Status</section>
+
+		<section class="ptwo-section">
+			<img class="ptwo-icon" src="./assets/blowfish.png" id="pTwpIcon" alt="player two icon">
+			<p class="ptwo-wins" id="pTwoWins">0 Wins</p>
+		</section>
+	</header>
+
+	<section class="game-board" id ="gameBoard">
+		<div class="board-row">
+			<div class="board-space" id="space0">0</div>
+			<div class="board-space" id="space1">1</div>
+			<div class="board-space" id="space2">2</div>
+		</div>	
+		<div class="board-row">		
+			<div class="board-space" id="space3">3</div>
+			<div class="board-space" id="space4">4</div>
+			<div class="board-space" id="space5">5</div>
+		</div>	
+		<div class="board-row">	
+			<div class="board-space" id="space6">6</div>
+			<div class="board-space" id="space7">7</div>
+			<div class="board-space" id="space8">8</div>
+		</div>
+
+	</section>
+	<script src="./game.js"></script>
+	<script src="./player.js"></script>
+	<script src="./main.js"></script>
+</body>
+
 </html>

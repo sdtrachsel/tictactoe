@@ -10,7 +10,7 @@ class Game {
 		this.currentGameBoard = [];
 
 // ***** may not need? Possible toggle? *****
-		this.playerTurn = this.player[0];
+		this.currentPlayerTurn = this.players[0];
 	}
 
 	checkWin(){

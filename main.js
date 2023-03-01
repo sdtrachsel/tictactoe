@@ -32,16 +32,21 @@ function placeToken(){
     // dom hears click on space
     //dom hears click on ancestor
     //ancestor gives ID
-git     var selectedBoardSpace =event.target.id
+   var selectedBoardSpace =event.target.id
     var boardSpaceLoc = Number(selectedBoardSpace.charAt(selectedBoardSpace.length - 1))
 
 
-    //Use Id to player info to gameboard array
+    //Use Id to add player info to gameboard array
     currentRound.currentGameBoard[boardSpaceLoc]= currentRound.currentPlayerTurn
 
     //diplay on gameboard
-//******Pullout of handler? and refactor */
+//******Pullout of handler when refactor? */
     var tokenNode = document.createElement('img')
     tokenNode.src = currentRound.currentPlayerTurn.token
     event.target.appendChild(tokenNode)
+
+    // Change turn
+    currentRound.changeTurn()
 }
+
+

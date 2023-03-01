@@ -13,7 +13,17 @@ class Game {
 		this.currentPlayerTurn = this.players[0];
 	}
 
+	changeTurn(){
+		if (this.currentPlayerTurn === this.players[0]){
+			this.currentPlayerTurn = this.players[1];
+		} else {
+			this.currentPlayerTurn = this.players[0];
+		}
+	}
+
 	checkWin(){
+
+		
 
 	}
 

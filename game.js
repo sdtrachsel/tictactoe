@@ -44,6 +44,9 @@ class Game {
 
 		} else if(this.gameBoard[2] === player && this.gameBoard[4] === player && this.gameBoard[6] === player){
 			console.log(`${player.id} wins by rtl diagnal`)
+//draw			
+		} else if (this.gameBoard.length === 9 && !this.gameBoard.includes(undefined)){
+			console.log ("this is a draw")
 		}
 	}
 

@@ -53,7 +53,5 @@ class Game {
 
 	newGameBoard() {
 		this.gameBoard =[];
-		this.currentPlayer = this.playerOne;
-	///** Add */ game status header 
-	}
+		}
 }

@@ -3,22 +3,22 @@ var gameStatusHeader = document.getElementById('gameStatus')
 var playerTurnIcon = document.getElementById('turnIcon')
 var playerOneWins = document.getElementById('pOneWins')
 var playerTwoWins = document.getElementById('pTwoWins')
-
 var gameBoard = document.getElementById('gameBoard')
 
-
+var gameRound = new Game(new Player("one", "./assets/badger.png", "player one icon badger"), new Player("two", "./assets/blowfish.png", "player two icon blowfish"))
 // Eventlisteners
 gameBoard.addEventListener('click', placeToken)
 
-// Variables
-var gameRound = new Game(new Player("one", "./assets/badger.png", "player one icon badger"), new Player("two", "./assets/blowfish.png", "player two icon blowfish"))
+//**** add eventlister/handler to set player one as current player? */
+
+// Variable
+
 
 
 // Event Handlers
 function placeToken() {
 	if (event.target.classList.contains("board-space")) {
-		// Place token
-
+// Place token
 		var selectedBoardSpace = event.target.id
 		gameRound.gameBoard[Number(selectedBoardSpace)] = gameRound.currentPlayer
 
@@ -32,26 +32,37 @@ function placeToken() {
 			if (gameRound.currentPlayer.id.includes('one')) {
 				gameRound.playerOne.wins++;
 				playerOneWins.innerText =`${gameRound.playerOne.wins} Wins`
-				gameStatusHeader.innerHTML = `
-				<img class="winner-icon" src=${gameRound.playerOne.token} alt=${gameRound.playerOne.altText}> won!
-				`
-			} else if (gameRound.currentPlayer.id.includes('two')) {
+				gameStatusHeader.innerHTML = `<img class="winner-icon" src=${gameRound.playerOne.token} alt=${gameRound.playerOne.altText}> won!`
+				
+				setTimeout(startNewGame, 3000)
+				} else if (gameRound.currentPlayer.id.includes('two')) {
 				gameRound.playerTwo.wins++
-				playerOneWins.innerText =`${gameRound.playerTwo.wins} Wins`
-				gameStatusHeader.innerHTML = `
-				<img class="winner-icon" src=${gameRound.playerTwo.token} alt=${gameRound.playerTwo.altText}> won!
-				`
+				playerTwoWins.innerText =`${gameRound.playerTwo.wins} Wins`
+				gameStatusHeader.innerHTML = `<img class="winner-icon" src=${gameRound.playerTwo.token} alt=${gameRound.playerTwo.altText}> won!`
+			
+				setTimeout(startNewGame, 3000)
 			}
 		} else if (gameRound.gameBoard.length === 9 && !gameRound.gameBoard.includes(undefined)) {
-			gameStatusHeader.innerHTML = "It's a draw";			
-		} else {
+				gameStatusHeader.innerHTML = "It's a draw";			
+				setTimeout(startNewGame, 3000)
+			} else {
 //Change Turn 
 			gameRound.changeTurn()
 			playerTurnIcon.src = gameRound.currentPlayer.token
 		}
-
-
 	}
 }
 
+function startNewGame(){
 
+	gameRound.changeTurn()
+	playerTurnIcon.src = gameRound.currentPlayer.token
+	gameRound.newGameBoard()
+	gameStatusHeader.innerHTML = `It's <img class="turn-icon" src=${gameRound.currentPlayer.token} id="turnIcon" alt=${gameRound.currentPlayer.altText}>'s turn`
+
+	var boardSpaces = document.querySelectorAll('.board-space')
+	for (var i = 0; i < boardSpaces.length; i++){
+		boardSpaces[i].innerHTML =''
+	}
+
+}

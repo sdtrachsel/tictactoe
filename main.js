@@ -5,13 +5,11 @@ var playerOneWins = document.getElementById('pOneWins')
 var playerTwoWins = document.getElementById('pTwoWins')
 var gameBoard = document.getElementById('gameBoard')
 
+//Variable
 var gameRound = new Game(new Player("one", "./assets/badger.png", "player one icon badger"), new Player("two", "./assets/blowfish.png", "player two icon blowfish"))
 // Eventlisteners
 gameBoard.addEventListener('click', placeToken)
 
-//**** add eventlister/handler to set player one as current player? */
-
-// Variable
 
 
 
@@ -32,13 +30,13 @@ function placeToken() {
 			if (gameRound.currentPlayer.id.includes('one')) {
 				gameRound.playerOne.wins++;
 				playerOneWins.innerText =`${gameRound.playerOne.wins} Wins`
-				gameStatusHeader.innerHTML = `<img class="winner-icon" src=${gameRound.playerOne.token} alt=${gameRound.playerOne.altText}> won!`
+				gameStatusHeader.innerHTML = `<img class="winner-token" src=${gameRound.playerOne.token} alt=${gameRound.playerOne.altText}> won!`
 				
 				setTimeout(startNewGame, 3000)
 				} else if (gameRound.currentPlayer.id.includes('two')) {
 				gameRound.playerTwo.wins++
 				playerTwoWins.innerText =`${gameRound.playerTwo.wins} Wins`
-				gameStatusHeader.innerHTML = `<img class="winner-icon" src=${gameRound.playerTwo.token} alt=${gameRound.playerTwo.altText}> won!`
+				gameStatusHeader.innerHTML = `<img class="winner-token" src=${gameRound.playerTwo.token} alt=${gameRound.playerTwo.altText}> won!`
 			
 				setTimeout(startNewGame, 3000)
 			}
@@ -66,3 +64,8 @@ function startNewGame(){
 	}
 
 }
+
+//**** add eventlister/handler to set header images */
+//****Lock the other board spaces once won*/
+//*** add disabled to boardspa */
+//***after new round the player tokens are not being switched in the header */

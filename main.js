@@ -5,13 +5,11 @@ var playerOneWins = document.getElementById('pOneWins')
 var playerTwoWins = document.getElementById('pTwoWins')
 var gameBoard = document.getElementById('gameBoard')
 
-var gameRound = new Game(new Player("one", "./assets/badger.png", "player one icon badger"), new Player("two", "./assets/blowfish.png", "player two icon blowfish"))
+//Variable
+var gameRound = new Game(new Player("one", "./assets/machoman.png", "player one token Macho Man"), new Player("two", "./assets/ultimatewarrior.png", "player two token Ultimate Warrior"))
 // Eventlisteners
 gameBoard.addEventListener('click', placeToken)
 
-//**** add eventlister/handler to set player one as current player? */
-
-// Variable
 
 
 
@@ -25,6 +23,7 @@ function placeToken() {
 		var tokenElement = document.createElement('img')
 		tokenElement.src = gameRound.currentPlayer.token
 		tokenElement.alt = gameRound.currentPlayer.altText
+		tokenElement.classList.add("board-token")
 		event.target.appendChild(tokenElement)
 
 // Check for winner 
@@ -32,13 +31,13 @@ function placeToken() {
 			if (gameRound.currentPlayer.id.includes('one')) {
 				gameRound.playerOne.wins++;
 				playerOneWins.innerText =`${gameRound.playerOne.wins} Wins`
-				gameStatusHeader.innerHTML = `<img class="winner-icon" src=${gameRound.playerOne.token} alt=${gameRound.playerOne.altText}> won!`
+				gameStatusHeader.innerHTML = `<img class="winner-token" src=${gameRound.playerOne.token} alt=${gameRound.playerOne.altText}> won!`
 				
 				setTimeout(startNewGame, 3000)
 				} else if (gameRound.currentPlayer.id.includes('two')) {
 				gameRound.playerTwo.wins++
 				playerTwoWins.innerText =`${gameRound.playerTwo.wins} Wins`
-				gameStatusHeader.innerHTML = `<img class="winner-icon" src=${gameRound.playerTwo.token} alt=${gameRound.playerTwo.altText}> won!`
+				gameStatusHeader.innerHTML = `<img class="winner-token" src=${gameRound.playerTwo.token} alt=${gameRound.playerTwo.altText}> won!`
 			
 				setTimeout(startNewGame, 3000)
 			}
@@ -58,7 +57,7 @@ function startNewGame(){
 	gameRound.changeTurn()
 	playerTurnIcon.src = gameRound.currentPlayer.token
 	gameRound.newGameBoard()
-	gameStatusHeader.innerHTML = `It's <img class="turn-icon" src=${gameRound.currentPlayer.token} id="turnIcon" alt=${gameRound.currentPlayer.altText}>'s turn`
+	gameStatusHeader.innerHTML = `It's <img class="turn-token" src=${gameRound.currentPlayer.token} id="turnIcon" alt=${gameRound.currentPlayer.altText}>'s turn`
 
 	var boardSpaces = document.querySelectorAll('.board-space')
 	for (var i = 0; i < boardSpaces.length; i++){
@@ -66,3 +65,9 @@ function startNewGame(){
 	}
 
 }
+
+//**** add eventlister/handler to set header images */
+//****Lock the other board spaces once won*/
+//*** add disabled to boardspaces */
+//** Add  */
+//***after new round the player tokens are not being switched in the header */

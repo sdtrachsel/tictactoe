@@ -1,6 +1,8 @@
 // Query Selectors
 var gameStatusHeader = document.getElementById('gameStatus')
-var playerTurnIcon = document.getElementById('turnIcon')
+var playerTurnIcon = document.getElementById('turnToken')
+var playerOneStatusToken = document.getElementById('playerOneToken')
+var playerTwoStatusToken = document.getElementById('playerTwoToken')
 var playerOneWins = document.getElementById('pOneWins')
 var playerTwoWins = document.getElementById('pTwoWins')
 var gameBoard = document.getElementById('gameBoard')
@@ -9,8 +11,15 @@ var gameBoard = document.getElementById('gameBoard')
 var gameRound = new Game(new Player("one", "./assets/machoman.png", "player one token Macho Man"), new Player("two", "./assets/ultimatewarrior.png", "player two token Ultimate Warrior"))
 // Eventlisteners
 gameBoard.addEventListener('click', placeToken)
+window.addEventListener('load', loadPlayers)
 
+function loadPlayers(){
+	playerOneStatusToken.src = `${gameRound.playerOne.token}`
+	playerOneStatusToken.alt= `${gameRound.playerOne.altText}`
+	playerTwoStatusToken.src =`${gameRound.playerTwo.token}`
+	playerTwoStatusToken.alt= `${gameRound.playerTwo.altText}`
 
+}
 
 
 // Event Handlers
@@ -69,5 +78,5 @@ function startNewGame(){
 //**** add eventlister/handler to set header images */
 //****Lock the other board spaces once won*/
 //*** add disabled to boardspaces */
-//** Add  */
+//** Add finger hover over board spaces */
 //***after new round the player tokens are not being switched in the header */

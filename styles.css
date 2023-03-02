@@ -1,9 +1,10 @@
-* {
+/* * {
 	border: 1px red solid;
-}
+} */
 
 body {
 	border: 2px orange dashed;
+	background-color: rgb(186, 184, 184);
 	width: 100vw;
 	height: 100vh;
 	margin: 0;
@@ -36,33 +37,68 @@ header {
 .winner-token,
 .turn-token {
 	height: 50px;
-	width: 50px;
 }
+
+.status-token{
+	height: 100px;
+	}
 
 
 /* Game Board */
 .game-board {
-	border: 2px green dashed;
-	background-color: aqua;
+	background: url(./assets/arena.png) center no-repeat;
+	background-size: 500px;
+	background-position-x:48%;
+	background-position-y: 52%;
+	overflow:visible;
 	display: flex;
 	flex-direction: column;
-	align-content: center;
+	align-items: center;
 	justify-content: center;
 	width: 66%;
-	height: 66%;
+	height: 100%;
 }
 
 .board-row {
-	border: 2px blue dashed;
-	width: 100%;
-	height: 30%;
+	width: 490px;
+	height: 135px;
 	display: flex;
 	justify-content: center;
+	margin: 0;
 }
 
 .board-space {
 	aspect-ratio: 1/1;
 	height: 100%;
 	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
+.board-token{
+	height:75px;
+}
+
+.sq-zero,
+.sq-one,
+.sq-two{
+	border-bottom: 4px darkgray solid;
+}
+
+.sq-six,
+.sq-seven,
+.sq-eight {
+	border-top: 4px darkgray solid;
+}
+
+.sq-zero,
+.sq-three,
+.sq-six {
+	border-right: 4px darkgray solid;
+}
+
+.sq-two,
+.sq-five,
+.sq-eight {
+	border-left: 4px darkgray solid;
+}

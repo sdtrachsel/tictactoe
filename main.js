@@ -6,7 +6,7 @@ var playerTwoWins = document.getElementById('pTwoWins')
 var gameBoard = document.getElementById('gameBoard')
 
 //Variable
-var gameRound = new Game(new Player("one", "./assets/badger.png", "player one icon badger"), new Player("two", "./assets/blowfish.png", "player two icon blowfish"))
+var gameRound = new Game(new Player("one", "./assets/machoman.png", "player one token Macho Man"), new Player("two", "./assets/ultimatewarrior.png", "player two token Ultimate Warrior"))
 // Eventlisteners
 gameBoard.addEventListener('click', placeToken)
 
@@ -23,6 +23,7 @@ function placeToken() {
 		var tokenElement = document.createElement('img')
 		tokenElement.src = gameRound.currentPlayer.token
 		tokenElement.alt = gameRound.currentPlayer.altText
+		tokenElement.classList.add("board-token")
 		event.target.appendChild(tokenElement)
 
 // Check for winner 
@@ -56,7 +57,7 @@ function startNewGame(){
 	gameRound.changeTurn()
 	playerTurnIcon.src = gameRound.currentPlayer.token
 	gameRound.newGameBoard()
-	gameStatusHeader.innerHTML = `It's <img class="turn-icon" src=${gameRound.currentPlayer.token} id="turnIcon" alt=${gameRound.currentPlayer.altText}>'s turn`
+	gameStatusHeader.innerHTML = `It's <img class="turn-token" src=${gameRound.currentPlayer.token} id="turnIcon" alt=${gameRound.currentPlayer.altText}>'s turn`
 
 	var boardSpaces = document.querySelectorAll('.board-space')
 	for (var i = 0; i < boardSpaces.length; i++){
@@ -67,5 +68,6 @@ function startNewGame(){
 
 //**** add eventlister/handler to set header images */
 //****Lock the other board spaces once won*/
-//*** add disabled to boardspa */
+//*** add disabled to boardspaces */
+//** Add  */
 //***after new round the player tokens are not being switched in the header */

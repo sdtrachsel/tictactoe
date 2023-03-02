@@ -3,6 +3,10 @@
 
 <head>
 	<meta charset="UTF-8">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+
 	<link rel="stylesheet" href="./styles.css">
 	<title>Tic-Tac-Toe</title>
 </head>
@@ -14,26 +18,30 @@
 			<p class="pone-wins" id="pOneWins">0 Wins</p>
 		</section>
 
-		<section class="game-status" id="gameStatus">It's <img class="turn-token" src="./assets/machoman.png" id="turnIcon" alt="player one icon badger">'s turn</section>
+		<section class="game-status" id="gameStatus">
+			<p>It's</p>
+			<img class="turn-token" src="./assets/machoman.png" id="turnIcon" alt="player one icon badger">
+			<p>'s turn</p>
+			</section>
 
 		<section class="player-status">
 			<img class="status-token" src="./assets/ultimatewarrior.png" id="pTwpIcon" alt="player two icon">
 			<p class="ptwo-wins" id="pTwoWins">0 Wins</p>
 		</section>
 	</header>
-	
-	<section class="game-board" id ="gameBoard">
+
+	<section class="game-board" id="gameBoard">
 		<div class="board-row">
 			<div class="board-space sq-zero" id="0"></div>
 			<div class="board-space sq-one" id="1"></div>
 			<div class="board-space sq-two" id="2"></div>
-		</div>	
-		<div class="board-row">		
+		</div>
+		<div class="board-row">
 			<div class="board-space sq-three" id="3"></div>
 			<div class="board-space sq-four" id="4"></div>
 			<div class="board-space sq-five" id="5"></div>
-		</div>	
-		<div class="board-row">	
+		</div>
+		<div class="board-row">
 			<div class="board-space sq-six" id="6"></div>
 			<div class="board-space sq-seven" id="7"></div>
 			<div class="board-space sq-eight" id="8"></div>

@@ -1,10 +1,9 @@
-/* * {
-	border: 1px red solid;
-} */
+* {
+	font-family: 'Prompt', sans-serif;
+}
 
 body {
-	border: 2px orange dashed;
-	background-color: rgb(186, 184, 184);
+	background-image: linear-gradient(yellow, rgb(255, 168, 6));
 	width: 100vw;
 	height: 100vh;
 	margin: 0;
@@ -13,12 +12,15 @@ body {
 	align-items: center;
 }
 
+p {
+	font-size: 20px;
+}
+
 /* Header */
 header {
-	border: 3px purple solid;
 	display: flex;
 	justify-content: space-evenly;
-	height: 25vh;
+	height: 30vh;
 	width: 100vw;
 }
 
@@ -32,25 +34,30 @@ header {
 
 .player-status {
 	flex-direction: column;
+	padding-top: 15px;
+}
+
+.game-status {
+	align-content: center;
 }
 
 .winner-token,
 .turn-token {
-	height: 50px;
+	height: 60px;
 }
 
-.status-token{
+.status-token {
 	height: 100px;
-	}
+}
 
 
 /* Game Board */
 .game-board {
 	background: url(./assets/arena.png) center no-repeat;
 	background-size: 500px;
-	background-position-x:48%;
+	background-position-x: 48%;
 	background-position-y: 52%;
-	overflow:visible;
+	overflow: visible;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -75,13 +82,13 @@ header {
 	align-items: center;
 }
 
-.board-token{
-	height:75px;
+.board-token {
+	height: 75px;
 }
 
 .sq-zero,
 .sq-one,
-.sq-two{
+.sq-two {
 	border-bottom: 4px darkgray solid;
 }
 

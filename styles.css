@@ -109,3 +109,7 @@ header {
 .sq-eight {
 	border-left: 4px darkgray solid;
 }
+
+.hidden{
+	display: none;
+}

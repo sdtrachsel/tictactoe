@@ -11,8 +11,7 @@ class Game {
 		} else {
 			this.currentPlayer = this.players[0];
 		}
-		playerTurnIcon.src = gameRound.currentPlayer.token
-		playerTurnIcon.altText = gameRound.currentPlayer.altText
+		setToken(playerTurnToken, this.currentPlayer)
 	}
 
 	checkWin() {

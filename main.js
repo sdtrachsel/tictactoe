@@ -1,11 +1,12 @@
 // Query Selectors
-var playerTurnIcon = document.getElementById('turnToken')
+var playerTurnToken = document.getElementById('turnToken')
 var playerOneStatusToken = document.getElementById('playerOneToken')
 var playerTwoStatusToken = document.getElementById('playerTwoToken')
 var gameBoard = document.getElementById('gameBoard')
 var gameEndDisplay = document.getElementById('gameEndDisplay')
 var turnDisplay = document.getElementById('turnDisplay')
 var boardSpaces = document.querySelectorAll('.js-bs')
+var playerWinCounts = document.querySelectorAll('.win-count')
 
 //Variable
 var gameRound = new Game(new Player({id:"one", token:"./assets/machoman.png", altText:"player one token Macho Man"}), new Player({id:"two", token:"./assets/ultimatewarrior.png", altText:"player two token Ultimate Warrior"}))
@@ -15,14 +16,14 @@ window.addEventListener('load', loadPlayers)
 gameBoard.addEventListener('click', playerTurn)
 
 function loadPlayers() {
-	playerOneStatusToken.src = `${gameRound.players[0].token}`
-	playerOneStatusToken.alt = `${gameRound.players[0].altText}`
+	setToken(playerOneStatusToken, gameRound.players[0])
+	setToken(playerTwoStatusToken, gameRound.players[1])
+	setToken(playerTurnToken, gameRound.currentPlayer)
+}
 
-	playerTwoStatusToken.src = `${gameRound.players[1].token}`
-	playerTwoStatusToken.alt = `${gameRound.players[1].altText}`
-
-	playerTurnIcon.src = `${gameRound.currentPlayer.token}`
-	playerTurnIcon.altText = `${gameRound.currentPlayer.altText}`
+function setToken(element, player){
+	element.src = `${player.token}`
+	element.alt = `${player.altText}`
 }
 
 function playerTurn() {
@@ -30,16 +31,16 @@ function playerTurn() {
 		placeToken();
 		if (gameRound.checkWin()) {
 				stopTokenPlacement()
-				gameRound.players[findCurrentPlayerIndex()].wins++;
 
-				var winnerText = document.getElementById(gameRound.players[findCurrentPlayerIndex()].id + 'WinCount')
-				winnerText.innerText = `${gameRound.players[findCurrentPlayerIndex()].wins}`
-				
-				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[findCurrentPlayerIndex()].token} alt=${gameRound.players[findCurrentPlayerIndex()].altText}> won!`
+				var index = findCurrentPlayerIndex();				
+				gameRound.players[index].wins++;
+				playerWinCounts[index].innerText = `${gameRound.players[index].wins}`		
+				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[index].token} alt=${gameRound.players[index].altText}> won!`
+
 				showEndGameDisplay()
 				setTimeout(startNewGame, 3000)
 		} else if (gameRound.gameBoard.length === 9 && !gameRound.gameBoard.includes(undefined)) {
-			gameEndDisplay.innerHTML = "<p> It's a draw </p>";
+			gameEndDisplay.innerHTML = "<p>It's a draw </p>"
 			showEndGameDisplay()
 			setTimeout(startNewGame, 3000)
 		} else {
@@ -51,10 +52,8 @@ function playerTurn() {
 function startNewGame() {
 	gameRound.newGameBoard()
 	gameRound.changeTurn()
-
-	turnDisplay.classList.remove('hidden')
-	gameEndDisplay.classList.add('hidden')
-
+	show(turnDisplay)
+	hide(gameEndDisplay)
 }
 
 function stopTokenPlacement() {
@@ -64,19 +63,18 @@ function stopTokenPlacement() {
 }
 
 function showEndGameDisplay() {
-	turnDisplay.classList.add('hidden')
-	gameEndDisplay.classList.remove('hidden')
+	show(gameEndDisplay)
+	hide(turnDisplay)
 }
 
 function placeToken() {
-	var selectedBoardSpace = event.target.id
-	gameRound.gameBoard[Number(selectedBoardSpace)] = gameRound.currentPlayer
+	gameRound.gameBoard[Number(event.target.id)] = gameRound.currentPlayer
 	event.target.classList.add('js-occupied')
 
 	var tokenElement = document.createElement('img')
 	tokenElement.src = gameRound.currentPlayer.token
 	tokenElement.alt = gameRound.currentPlayer.altText
-	tokenElement.classList.add("board-token")
+	tokenElement.classList.add('board-token')
 	event.target.appendChild(tokenElement)
 }
 
@@ -89,5 +87,12 @@ function findCurrentPlayerIndex(){
 	} return index
 }
 
+function hide(element){
+	element.classList.add('hidden')
+}
+
+function show(element){
+	element.classList.remove('hidden')
+}
 
 //** Add finger hover over board spaces */

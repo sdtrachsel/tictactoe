@@ -58,7 +58,7 @@ function placeToken() {
 
 				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.playerOne.token} alt=${gameRound.playerOne.altText}> won!`
 				
-				setTimeout(startNewGame, 3000)
+				setTimeout(startNewGame, 30000)
 				} else if (gameRound.currentPlayer.id.includes('two')) {
 				for (var i = 0; i < boardSpaces.length; i++){
 						boardSpaces[i].classList.add('js-occupied')
@@ -69,14 +69,16 @@ function placeToken() {
 				turnDisplay.classList.add('hidden')
 				gameEndDisplay.classList.remove('hidden')
 
-				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.playerTwo.token} alt=${gameRound.playerTwo.altText}> won!`
+				gameEndDisplay.innerHTML = `
+				<img class="winner-token" src=${gameRound.playerTwo.token} alt=${gameRound.playerTwo.altText}> 
+				<p>won!</p>`
 			
 				setTimeout(startNewGame, 3000)
 			}
 		} else if (gameRound.gameBoard.length === 9 && !gameRound.gameBoard.includes(undefined)) {
 			turnDisplay.classList.add('hidden')
 			gameEndDisplay.classList.remove('hidden')
-				gameEndDisplay.innerHTML = "It's a draw";			
+				gameEndDisplay.innerHTML = "<p> It's a draw </p>";			
 				setTimeout(startNewGame, 3000)
 			} else {
 //Change Turn 

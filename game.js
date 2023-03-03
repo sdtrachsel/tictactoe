@@ -17,7 +17,7 @@ class Game {
 
 	checkWin() {
 		var winnerFound = false;
-		var player = this.currentPlayer
+		var player = this.currentPlayer;
 
 		if ((this.gameBoard[0] === player && this.gameBoard[1] === player && this.gameBoard[2] === player) ||
 			(this.gameBoard[3] === player && this.gameBoard[4] === player && this.gameBoard[5] === player) ||

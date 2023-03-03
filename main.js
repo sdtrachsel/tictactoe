@@ -2,8 +2,6 @@
 var playerTurnIcon = document.getElementById('turnToken')
 var playerOneStatusToken = document.getElementById('playerOneToken')
 var playerTwoStatusToken = document.getElementById('playerTwoToken')
-var playerOneWins = document.getElementById('pOneWins')
-var playerTwoWins = document.getElementById('pTwoWins')
 var gameBoard = document.getElementById('gameBoard')
 var gameEndDisplay = document.getElementById('gameEndDisplay')
 var turnDisplay = document.getElementById('turnDisplay')
@@ -25,41 +23,21 @@ function loadPlayers() {
 
 	playerTurnIcon.src = `${gameRound.currentPlayer.token}`
 	playerTurnIcon.altText = `${gameRound.currentPlayer.altText}`
-
-
 }
 
-
-// Event Handlers
 function playerTurn() {
 	if (event.target.classList.contains("board-space") && !event.target.classList.contains('js-occupied')) {
 		placeToken();
-
-		// Check for winner 
 		if (gameRound.checkWin()) {
-			if (gameRound.currentPlayer.id.includes('one')) {
 				stopTokenPlacement()
+				gameRound.players[findCurrentPlayerIndex()].wins++;
 
-				gameRound.players[0].wins++;
-				playerOneWins.innerText = `${gameRound.players[0].wins} Wins`
-				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[0].token} alt=${gameRound.players[0].altText}> won!`
+				var winnerText = document.getElementById(gameRound.players[findCurrentPlayerIndex()].id + 'WinCount')
+				winnerText.innerText = `${gameRound.players[findCurrentPlayerIndex()].wins}`
+				
+				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[findCurrentPlayerIndex()].token} alt=${gameRound.players[findCurrentPlayerIndex()].altText}> won!`
 				showEndGameDisplay()
 				setTimeout(startNewGame, 3000)
-
-			} else if (gameRound.currentPlayer.id.includes('two')) {
-				stopTokenPlacement()
-
-				gameRound.playerTwo.wins++;
-				playerTwoWins.innerText = `${gameRound.playerTwo.wins} Wins`
-
-				showEndGameDisplay()
-
-				gameEndDisplay.innerHTML = `
-				<img class="winner-token" src=${gameRound.playerTwo.token} alt=${gameRound.playerTwo.altText}> 
-				<p>won!</p>`
-
-				setTimeout(startNewGame, 3000)
-			}
 		} else if (gameRound.gameBoard.length === 9 && !gameRound.gameBoard.includes(undefined)) {
 			gameEndDisplay.innerHTML = "<p> It's a draw </p>";
 			showEndGameDisplay()
@@ -100,6 +78,15 @@ function placeToken() {
 	tokenElement.alt = gameRound.currentPlayer.altText
 	tokenElement.classList.add("board-token")
 	event.target.appendChild(tokenElement)
+}
+
+function findCurrentPlayerIndex(){
+	var index 
+	for (var i = 0; i < gameRound.players.length; i++){
+		if (gameRound.players[i].id === gameRound.currentPlayer.id){
+			index = i;
+		}
+	} return index
 }
 
 

@@ -26,7 +26,6 @@ header {
 
 
 .game-status{
- border: 2px green solid;
  display: flex;
  justify-content: center;
  align-items: center;
@@ -43,7 +42,6 @@ header {
 }
 
 .game-end-display{
-	border: 4px purple solid;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -51,7 +49,6 @@ header {
 	height: 100%;
 }
 .turn-display {
-	border: 2px red solid;
 	display: flex;
 	justify-content: center;
 	width: 100%;
@@ -59,7 +56,6 @@ header {
 
 .winner-token,
 .turn-token {
-	border: 2px blue solid;
 	height: 60px;
 }
 

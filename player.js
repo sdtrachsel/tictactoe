@@ -1,8 +1,8 @@
 class Player {
-  constructor(playerNumber, image, altText) {
-    this.id = playerNumber;
-    this.token = image ;
-    this.altText= altText;
+  constructor(player) {
+    this.id = player.id;
+    this.token = player.token ;
+    this.altText= player.altText;
     this.wins = 0;
   }
 }

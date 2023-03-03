@@ -1,5 +1,4 @@
 // Query Selectors
-
 var playerTurnIcon = document.getElementById('turnToken')
 var playerOneStatusToken = document.getElementById('playerOneToken')
 var playerTwoStatusToken = document.getElementById('playerTwoToken')
@@ -11,18 +10,18 @@ var turnDisplay = document.getElementById('turnDisplay')
 var boardSpaces = document.querySelectorAll('.js-bs')
 
 //Variable
-var gameRound = new Game(new Player("one", "./assets/machoman.png", "player one token Macho Man"), new Player("two", "./assets/ultimatewarrior.png", "player two token Ultimate Warrior"))
+var gameRound = new Game(new Player({id:"one", token:"./assets/machoman.png", altText:"player one token Macho Man"}), new Player({id:"two", token:"./assets/ultimatewarrior.png", altText:"player two token Ultimate Warrior"}))
 
 // Eventlisteners
 window.addEventListener('load', loadPlayers)
 gameBoard.addEventListener('click', playerTurn)
 
 function loadPlayers() {
-	playerOneStatusToken.src = `${gameRound.playerOne.token}`
-	playerOneStatusToken.alt = `${gameRound.playerOne.altText}`
+	playerOneStatusToken.src = `${gameRound.players[0].token}`
+	playerOneStatusToken.alt = `${gameRound.players[0].altText}`
 
-	playerTwoStatusToken.src = `${gameRound.playerTwo.token}`
-	playerTwoStatusToken.alt = `${gameRound.playerTwo.altText}`
+	playerTwoStatusToken.src = `${gameRound.players[1].token}`
+	playerTwoStatusToken.alt = `${gameRound.players[1].altText}`
 
 	playerTurnIcon.src = `${gameRound.currentPlayer.token}`
 	playerTurnIcon.altText = `${gameRound.currentPlayer.altText}`
@@ -41,14 +40,12 @@ function playerTurn() {
 			if (gameRound.currentPlayer.id.includes('one')) {
 				stopTokenPlacement()
 
-				gameRound.playerOne.wins++;
-				playerOneWins.innerText = `${gameRound.playerOne.wins} Wins`
-
+				gameRound.players[0].wins++;
+				playerOneWins.innerText = `${gameRound.players[0].wins} Wins`
+				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[0].token} alt=${gameRound.players[0].altText}> won!`
 				showEndGameDisplay()
-
-				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.playerOne.token} alt=${gameRound.playerOne.altText}> won!`
-
 				setTimeout(startNewGame, 3000)
+
 			} else if (gameRound.currentPlayer.id.includes('two')) {
 				stopTokenPlacement()
 
@@ -68,7 +65,6 @@ function playerTurn() {
 			showEndGameDisplay()
 			setTimeout(startNewGame, 3000)
 		} else {
-			//Change Turn 
 			gameRound.changeTurn()
 		}
 	}
@@ -76,15 +72,7 @@ function playerTurn() {
 
 function startNewGame() {
 	gameRound.newGameBoard()
-
-	for (var i = 0; i < boardSpaces.length; i++) {
-		boardSpaces[i].innerHTML = ''
-		boardSpaces[i].classList.remove('js-occupied')
-	}
-
 	gameRound.changeTurn()
-
-
 
 	turnDisplay.classList.remove('hidden')
 	gameEndDisplay.classList.add('hidden')

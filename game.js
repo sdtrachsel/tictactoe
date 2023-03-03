@@ -1,16 +1,15 @@
 class Game {
 	constructor(playerOne, playerTwo) {
-		this.playerOne = playerOne;
-		this.playerTwo = playerTwo;
+		this.players = [playerOne, playerTwo];
 		this.gameBoard = [];
-		this.currentPlayer = this.playerOne;
+		this.currentPlayer = this.players[0];
 	}
 
 	changeTurn() {
-		if (this.currentPlayer.id === this.playerOne.id) {
-			this.currentPlayer = this.playerTwo;
+		if (this.currentPlayer.id === this.players[0].id) {
+			this.currentPlayer = this.players[1];
 		} else {
-			this.currentPlayer = this.playerOne;
+			this.currentPlayer = this.players[0];
 		}
 		playerTurnIcon.src = gameRound.currentPlayer.token
 		playerTurnIcon.altText = gameRound.currentPlayer.altText
@@ -35,5 +34,9 @@ class Game {
 
 	newGameBoard() {
 		this.gameBoard = [];
+		for (var i = 0; i < boardSpaces.length; i++) {
+			boardSpaces[i].innerHTML = ''
+			boardSpaces[i].classList.remove('js-occupied')
+		}
 	}
 }

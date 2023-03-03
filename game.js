@@ -7,7 +7,7 @@ class Game {
 	}
 
 	changeTurn() {
-		if (this.currentPlayer === this.playerOne) {
+		if (this.currentPlayer.id === this.playerOne.id) {
 			this.currentPlayer = this.playerTwo;
 			} else {
 			this.currentPlayer = this.playerOne;

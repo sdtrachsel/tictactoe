@@ -14,37 +14,41 @@
 <body>
 	<header>
 		<section class="player-status">
-			<img class="status-token" src="./assets/machoman.png" id="pOneIcon" alt="player one icon badger">
+			<img class="status-token" id="playerOneToken" src="" alt="">
 			<p class="pone-wins" id="pOneWins">0 Wins</p>
 		</section>
 
 		<section class="game-status" id="gameStatus">
-			<p>It's</p>
-			<img class="turn-token" src="./assets/machoman.png" id="turnIcon" alt="player one icon badger">
-			<p>'s turn</p>
-			</section>
+			<div class="turn-display" id="turnDisplay">
+				<p>It's</p>
+				<img class="turn-token" id="turnToken" src="" alt="">
+				<p>'s turn</p>
+			</div>
+			<div class="game-end-display hidden" id="gameEndDisplay">
+			</div>
+		</section>
 
 		<section class="player-status">
-			<img class="status-token" src="./assets/ultimatewarrior.png" id="pTwpIcon" alt="player two icon">
+			<img class="status-token" id="playerTwoToken" src="" alt="">
 			<p class="ptwo-wins" id="pTwoWins">0 Wins</p>
 		</section>
 	</header>
 
 	<section class="game-board" id="gameBoard">
 		<div class="board-row">
-			<div class="board-space sq-zero" id="0"></div>
-			<div class="board-space sq-one" id="1"></div>
-			<div class="board-space sq-two" id="2"></div>
+			<div class="js-bs board-space sq-zero" id="0"></div>
+			<div class="js-bs board-space sq-one" id="1"></div>
+			<div class="js-bs board-space sq-two" id="2"></div>
 		</div>
 		<div class="board-row">
-			<div class="board-space sq-three" id="3"></div>
-			<div class="board-space sq-four" id="4"></div>
-			<div class="board-space sq-five" id="5"></div>
+			<div class="js-bs board-space sq-three" id="3"></div>
+			<div class="js-bs board-space sq-four" id="4"></div>
+			<div class="js-bs board-space sq-five" id="5"></div>
 		</div>
 		<div class="board-row">
-			<div class="board-space sq-six" id="6"></div>
-			<div class="board-space sq-seven" id="7"></div>
-			<div class="board-space sq-eight" id="8"></div>
+			<div class="js-bs board-space sq-six" id="6"></div>
+			<div class="js-bs board-space sq-seven" id="7"></div>
+			<div class="js-bs board-space sq-eight" id="8"></div>
 		</div>
 
 	</section>

@@ -9,8 +9,7 @@ var boardSpaces = document.querySelectorAll('.js-bsq')
 var playerWinCounts = document.querySelectorAll('.win-count')
 var winnerDisplay = document.getElementById('winnerDisplay')
 
-//Variable
-var gameRound = new Game(new Player({id:"one", token:"./assets/machoman.png", altText:"player one token Macho Man"}), new Player({id:"two", token:"./assets/ultimatewarrior.png", altText:"player two token Ultimate Warrior"}))
+var gameRound = new Game(new Player({ id: "one", token: "./assets/machoman.png", altText: "player one token Macho Man" }), new Player({ id: "two", token: "./assets/ultimatewarrior.png", altText: "player two token Ultimate Warrior" }))
 
 // Eventlisteners
 window.addEventListener('load', loadPlayers)
@@ -22,7 +21,7 @@ function loadPlayers() {
 	setToken(playerTurnToken, gameRound.currentPlayer)
 }
 
-function setToken(element, player){
+function setToken(element, player) {
 	element.src = `${player.token}`
 	element.alt = `${player.altText}`
 }
@@ -31,20 +30,20 @@ function playerTurn() {
 	if (event.target.classList.contains("board-space") && !event.target.classList.contains('occupied')) {
 		placeToken();
 
-		var winInfo =gameRound.checkWin()
+		var winInfo = gameRound.checkWin()
 
 		if (winInfo.winnerFound) {
-				stopTokenPlacement()
+			stopTokenPlacement()
 
-				var index = findCurrentPlayerIndex();				
-				gameRound.players[index].wins++;
-				playerWinCounts[index].innerText = `${gameRound.players[index].wins}`		
-				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[index].token} alt=${gameRound.players[index].altText}> <p>won!</p>`
-				
-				animateWinningTokens()
-				showEndGameDisplay()
-				setTimeout(declareWinner, 1000)
-				setTimeout(startNewGame, 3000)
+			var index = findCurrentPlayerIndex();
+			gameRound.players[index].wins++;
+			playerWinCounts[index].innerText = `${gameRound.players[index].wins}`
+			gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[index].token} alt=${gameRound.players[index].altText}> <p>won!</p>`
+
+			animateWinningTokens()
+			showEndGameDisplay()
+			setTimeout(declareWinner, 1000)
+			setTimeout(startNewGame, 3000)
 		} else if (gameRound.gameBoard.length === 9 && !gameRound.gameBoard.includes(undefined)) {
 			gameEndDisplay.innerHTML = "<p>It's a draw </p>"
 			showEndGameDisplay()
@@ -72,27 +71,26 @@ function stopTokenPlacement() {
 	}
 }
 
-function animateWinningTokens(){
+function animateWinningTokens() {
 	var winSquare = gameRound.checkWin().winningSpaces
 
-	for(var i = 0; i < boardSpaces.length; i++){
+	for (var i = 0; i < boardSpaces.length; i++) {
 		var space = Number(boardSpaces[i].id)
-		if(!(space === winSquare[0]) && !(space === winSquare[1]) && !(space === winSquare[2])){
-				boardSpaces[i].innerHTML =''
-		} 
+		if (!(space === winSquare[0]) && !(space === winSquare[1]) && !(space === winSquare[2])) {
+			boardSpaces[i].innerHTML = ''
+		}
 		else {
 			boardSpaces[i].children[0].classList.add('shimmy')
 		}
 	}
 }
 
-
 function showEndGameDisplay() {
 	show(gameEndDisplay)
 	hide(turnDisplay)
 }
 
-function declareWinner(){
+function declareWinner() {
 	winnerDisplay.children[1].src = gameRound.currentPlayer.token
 	winnerDisplay.children[1].alt = gameRound.currentPlayer.altText
 	hide(gameBoardDisplay)
@@ -108,24 +106,19 @@ function startNewGame() {
 	hide(winnerDisplay)
 }
 
-
-
-
-
-
-function findCurrentPlayerIndex(){
-	var index 
-	for (var i = 0; i < gameRound.players.length; i++){
-		if (gameRound.players[i].id === gameRound.currentPlayer.id){
+function findCurrentPlayerIndex() {
+	var index
+	for (var i = 0; i < gameRound.players.length; i++) {
+		if (gameRound.players[i].id === gameRound.currentPlayer.id) {
 			index = i;
 		}
 	} return index
 }
 
-function hide(element){
+function hide(element) {
 	element.classList.add('hidden')
 }
 
-function show(element){
+function show(element) {
 	element.classList.remove('hidden')
 }

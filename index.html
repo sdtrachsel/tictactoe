@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
-
 	<link rel="stylesheet" href="./styles.css">
 	<title>Tic-Tac-Toe</title>
 </head>
-
 <body>
 	<header>
 		<section class="player-status">
 			<img class="status-token" id="playerOneToken" src="" alt="">
-			<p class="pone-wins"><span class="win-count" id="oneWinCount">0</span> Wins</p>
+			<p><span class="win-count">0</span> Wins</p>
 		</section>
-
-		<section class="game-status" id="gameStatus">
+		<section class="game-status">
 			<div class="turn-display" id="turnDisplay">
 				<p>It's</p>
 				<img class="turn-token" id="turnToken" src="" alt="">
@@ -27,30 +23,27 @@
 			<div class="game-end-display hidden" id="gameEndDisplay">
 			</div>
 		</section>
-
 		<section class="player-status">
 			<img class="status-token" id="playerTwoToken" src="" alt="">
-			<p class="ptwo-wins"><span class="win-count" id="twoWinCount">0</span> Wins</p>
+			<p><span class="win-count">0</span> Wins</p>
 		</section>
 	</header>
-
 	<section class="game-board" id="gameBoard">
 		<div class="board-row">
-			<div class="js-bs board-space sq-zero" id="0"></div>
-			<div class="js-bs board-space sq-one" id="1"></div>
-			<div class="js-bs board-space sq-two" id="2"></div>
+			<div class="js-bsq board-space sq-zero" id="0"></div>
+			<div class="js-bsq board-space sq-one" id="1"></div>
+			<div class="js-bsq board-space sq-two" id="2"></div>
 		</div>
 		<div class="board-row">
-			<div class="js-bs board-space sq-three" id="3"></div>
-			<div class="js-bs board-space sq-four" id="4"></div>
-			<div class="js-bs board-space sq-five" id="5"></div>
+			<div class="js-bsq board-space sq-three" id="3"></div>
+			<div class="js-bsq board-space sq-four" id="4"></div>
+			<div class="js-bsq board-space sq-five" id="5"></div>
 		</div>
 		<div class="board-row">
-			<div class="js-bs board-space sq-six" id="6"></div>
-			<div class="js-bs board-space sq-seven" id="7"></div>
-			<div class="js-bs board-space sq-eight" id="8"></div>
+			<div class="js-bsq board-space sq-six" id="6"></div>
+			<div class="js-bsq board-space sq-seven" id="7"></div>
+			<div class="js-bsq board-space sq-eight" id="8"></div>
 		</div>
-
 	</section>
 	<script src="./game.js"></script>
 	<script src="./player.js"></script>

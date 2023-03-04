@@ -5,7 +5,7 @@ var playerTwoStatusToken = document.getElementById('playerTwoToken')
 var gameBoard = document.getElementById('gameBoard')
 var gameEndDisplay = document.getElementById('gameEndDisplay')
 var turnDisplay = document.getElementById('turnDisplay')
-var boardSpaces = document.querySelectorAll('.js-bs')
+var boardSpaces = document.querySelectorAll('.js-bsq')
 var playerWinCounts = document.querySelectorAll('.win-count')
 
 //Variable

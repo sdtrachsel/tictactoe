@@ -3,6 +3,9 @@
 }
 
 header {
+	/* z-index: 3;
+	position: absolute; */
+	border: 2px purple solid;
 	display: flex;
 	justify-content: center;
 	height: 30vh;
@@ -70,6 +73,10 @@ p {
 }
 
 .game-board {
+	/* z-index: 2;
+	position: absolute; */
+	/* top: 30vh; */
+	border: 2px red dashed;
 	background: url(./assets/arena.png) center no-repeat;
 	background-size: 500px;
 	background-position-x: 48%;
@@ -79,6 +86,27 @@ p {
 	width: 66%;
 	height: 100%;
 }
+
+/* .grid-lines {
+	z-index: 1;
+	position: absolute;
+	top: 30vh;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	border: 4px green solid;
+	background: url(./assets/arena.png) center no-repeat;
+	background-size: 500px;
+	background-position-x: 48%;
+	background-position-y: 52%;
+	overflow: visible;
+	flex-direction: column;
+	width: 66%;
+	height: 100%;
+} */
+
 
 .board-row {
 	width: 490px;
@@ -90,10 +118,24 @@ p {
 	aspect-ratio: 1/1;
 	height: 100%;
 	cursor: pointer;
+	overflow: visible;
 }
 
 .board-token {
 	height: 75px;
+}
+
+.shimmy {
+	animation: shimmy .15s;
+	animation-iteration-count: 4;
+}
+
+@keyframes shimmy {
+	0% { transform: rotate(0deg) rotate(0deg); }
+	25% { transform: rotate(5deg) rotate(10deg); }
+	50% { transform: rotate(0eg) rotate(0d)}
+	75% { transform: rotate(-5deg) rotate(-10deg); }
+	100% { transform: rotate(0deg) rotate(0deg); }
 }
 
 .occupied {

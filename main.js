@@ -39,20 +39,20 @@ function playerTurn() {
 				gameRound.players[index].wins++;
 				playerWinCounts[index].innerText = `${gameRound.players[index].wins}`		
 				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[index].token} alt=${gameRound.players[index].altText}> <p>won!</p>`
-				animateWin()
+				animateWinningTokens()
 				showEndGameDisplay()
-				// setTimeout(startNewGame, 3000)
+				setTimeout(startNewGame, 3000)
 		} else if (gameRound.gameBoard.length === 9 && !gameRound.gameBoard.includes(undefined)) {
 			gameEndDisplay.innerHTML = "<p>It's a draw </p>"
 			showEndGameDisplay()
-			// setTimeout(startNewGame, 3000)
+			setTimeout(startNewGame, 3000)
 		} else {
 			gameRound.changeTurn()
 		}
 	}
 }
 
-function animateWin(){
+function animateWinningTokens(){
 	var winSquare = gameRound.checkWin().winningSpaces
 
 	for(var i = 0; i < boardSpaces.length; i++){
@@ -60,14 +60,11 @@ function animateWin(){
 		if(!(space === winSquare[0]) && !(space === winSquare[1]) && !(space === winSquare[2])){
 				boardSpaces[i].innerHTML =''
 		} 
-		// else {
-		// 	// add class to image
-		// }
+		else {
+			boardSpaces[i].children[0].classList.add('shimmy')
+		}
 
 	}
-
-	// grab the tokens
-	//shake/enlarge the tokens --- addd a class?
 }
 
 function startNewGame() {

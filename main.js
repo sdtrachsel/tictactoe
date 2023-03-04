@@ -29,7 +29,10 @@ function setToken(element, player){
 function playerTurn() {
 	if (event.target.classList.contains("board-space") && !event.target.classList.contains('occupied')) {
 		placeToken();
-		if (gameRound.checkWin()) {
+		
+		var winInfo =gameRound.checkWin()
+
+		if (winInfo.winnerFound) {
 				stopTokenPlacement()
 
 				var index = findCurrentPlayerIndex();				
@@ -38,15 +41,19 @@ function playerTurn() {
 				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[index].token} alt=${gameRound.players[index].altText}> <p>won!</p>`
 
 				showEndGameDisplay()
-				setTimeout(startNewGame, 3000)
+				// setTimeout(startNewGame, 3000)
 		} else if (gameRound.gameBoard.length === 9 && !gameRound.gameBoard.includes(undefined)) {
 			gameEndDisplay.innerHTML = "<p>It's a draw </p>"
 			showEndGameDisplay()
-			setTimeout(startNewGame, 3000)
+			// setTimeout(startNewGame, 3000)
 		} else {
 			gameRound.changeTurn()
 		}
 	}
+}
+
+function animateWin(){
+	// Locate the 
 }
 
 function startNewGame() {

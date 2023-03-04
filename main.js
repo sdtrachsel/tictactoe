@@ -35,7 +35,7 @@ function playerTurn() {
 				var index = findCurrentPlayerIndex();				
 				gameRound.players[index].wins++;
 				playerWinCounts[index].innerText = `${gameRound.players[index].wins}`		
-				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[index].token} alt=${gameRound.players[index].altText}> won!`
+				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[index].token} alt=${gameRound.players[index].altText}> <p>won!</p>`
 
 				showEndGameDisplay()
 				setTimeout(startNewGame, 3000)

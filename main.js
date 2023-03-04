@@ -58,7 +58,7 @@ function startNewGame() {
 
 function stopTokenPlacement() {
 	for (var i = 0; i < boardSpaces.length; i++) {
-		boardSpaces[i].classList.add('js-occupied')
+		boardSpaces[i].classList.add('occupied')
 	}
 }
 

@@ -35,7 +35,7 @@ class Game {
 		this.gameBoard = [];
 		for (var i = 0; i < boardSpaces.length; i++) {
 			boardSpaces[i].innerHTML = ''
-			boardSpaces[i].classList.remove('js-occupied')
+			boardSpaces[i].classList.remove('occupied')
 		}
 	}
 }

@@ -27,7 +27,7 @@ function setToken(element, player){
 }
 
 function playerTurn() {
-	if (event.target.classList.contains("board-space") && !event.target.classList.contains('js-occupied')) {
+	if (event.target.classList.contains("board-space") && !event.target.classList.contains('occupied')) {
 		placeToken();
 		if (gameRound.checkWin()) {
 				stopTokenPlacement()
@@ -58,7 +58,7 @@ function startNewGame() {
 
 function stopTokenPlacement() {
 	for (var i = 0; i < boardSpaces.length; i++) {
-		boardSpaces[i].classList.add('js-occupied')
+		boardSpaces[i].classList.add('occupied')
 	}
 }
 
@@ -69,7 +69,7 @@ function showEndGameDisplay() {
 
 function placeToken() {
 	gameRound.gameBoard[Number(event.target.id)] = gameRound.currentPlayer
-	event.target.classList.add('js-occupied')
+	event.target.classList.add('occupied')
 
 	var tokenElement = document.createElement('img')
 	tokenElement.src = gameRound.currentPlayer.token

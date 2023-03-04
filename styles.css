@@ -3,9 +3,6 @@
 }
 
 header {
-	/* z-index: 3;
-	position: absolute; */
-	border: 2px purple solid;
 	display: flex;
 	justify-content: center;
 	height: 30vh;
@@ -73,26 +70,18 @@ p {
 }
 
 .game-action{
-	border: 4px green solid;
 	background: url(./assets/arena.png) center no-repeat;
 	background-size: 500px;
 	background-position-x: 48%;
 	background-position-y: 52%;
-	
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	overflow: visible;
-	
 	width: 66%;
 	height: 100%;
 }
 .game-board {
-	border: 2px red dashed;
-	/* background: url(./assets/arena.png) center no-repeat;
-	background-size: 500px;
-	background-position-x: 48%;
-	background-position-y: 52%; */
 	overflow: visible;
 	flex-direction: column;
 	width: 100%;
@@ -100,20 +89,18 @@ p {
 }
 
 .winner-display{
-	border: 2px purple solid;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	height: 60%;
 	
 }
+
 .winner-big-token{
 	height: 175px;
-	
 }
 
 .winner-text{
-	border: 2px orange solid;
 	font-size:60px ;
 	margin: 5px;
 }

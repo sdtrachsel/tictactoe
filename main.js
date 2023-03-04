@@ -7,6 +7,7 @@ var gameEndDisplay = document.getElementById('gameEndDisplay')
 var turnDisplay = document.getElementById('turnDisplay')
 var boardSpaces = document.querySelectorAll('.js-bsq')
 var playerWinCounts = document.querySelectorAll('.win-count')
+var winnerDisplay = document.getElementById('winnerDisplay')
 
 //Variable
 var gameRound = new Game(new Player({id:"one", token:"./assets/machoman.png", altText:"player one token Macho Man"}), new Player({id:"two", token:"./assets/ultimatewarrior.png", altText:"player two token Ultimate Warrior"}))
@@ -39,8 +40,10 @@ function playerTurn() {
 				gameRound.players[index].wins++;
 				playerWinCounts[index].innerText = `${gameRound.players[index].wins}`		
 				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[index].token} alt=${gameRound.players[index].altText}> <p>won!</p>`
+				
 				animateWinningTokens()
 				showEndGameDisplay()
+				setTimeout(declareWinner, 1000)
 				setTimeout(startNewGame, 3000)
 		} else if (gameRound.gameBoard.length === 9 && !gameRound.gameBoard.includes(undefined)) {
 			gameEndDisplay.innerHTML = "<p>It's a draw </p>"
@@ -49,6 +52,23 @@ function playerTurn() {
 		} else {
 			gameRound.changeTurn()
 		}
+	}
+}
+
+function placeToken() {
+	gameRound.gameBoard[Number(event.target.id)] = gameRound.currentPlayer
+	event.target.classList.add('occupied')
+
+	var tokenElement = document.createElement('img')
+	tokenElement.src = gameRound.currentPlayer.token
+	tokenElement.alt = gameRound.currentPlayer.altText
+	tokenElement.classList.add('board-token')
+	event.target.appendChild(tokenElement)
+}
+
+function stopTokenPlacement() {
+	for (var i = 0; i < boardSpaces.length; i++) {
+		boardSpaces[i].classList.add('occupied')
 	}
 }
 
@@ -66,11 +86,17 @@ function animateWinningTokens(){
 	}
 }
 
-function declareWinnerDisplay(){
-	// create hidden div that covers gameboard
-	//animate div to roll in
-	//insert winnning text
-	//insert large winner token
+
+function showEndGameDisplay() {
+	show(gameEndDisplay)
+	hide(turnDisplay)
+}
+
+function declareWinner(){
+	winnerDisplay.children[1].src = gameRound.currentPlayer.token
+	winnerDisplay.children[1].alt = gameRound.currentPlayer.altText
+	hide(gameBoardDisplay)
+	show(winnerDisplay)
 }
 
 function startNewGame() {
@@ -78,29 +104,14 @@ function startNewGame() {
 	gameRound.changeTurn()
 	show(turnDisplay)
 	hide(gameEndDisplay)
+	show(gameBoardDisplay)
+	hide(winnerDisplay)
 }
 
-function stopTokenPlacement() {
-	for (var i = 0; i < boardSpaces.length; i++) {
-		boardSpaces[i].classList.add('occupied')
-	}
-}
 
-function showEndGameDisplay() {
-	show(gameEndDisplay)
-	hide(turnDisplay)
-}
 
-function placeToken() {
-	gameRound.gameBoard[Number(event.target.id)] = gameRound.currentPlayer
-	event.target.classList.add('occupied')
 
-	var tokenElement = document.createElement('img')
-	tokenElement.src = gameRound.currentPlayer.token
-	tokenElement.alt = gameRound.currentPlayer.altText
-	tokenElement.classList.add('board-token')
-	event.target.appendChild(tokenElement)
-}
+
 
 function findCurrentPlayerIndex(){
 	var index 
@@ -118,5 +129,3 @@ function hide(element){
 function show(element){
 	element.classList.remove('hidden')
 }
-
-//** Add finger hover over board spaces */

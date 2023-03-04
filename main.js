@@ -29,7 +29,7 @@ function setToken(element, player){
 function playerTurn() {
 	if (event.target.classList.contains("board-space") && !event.target.classList.contains('occupied')) {
 		placeToken();
-		
+
 		var winInfo =gameRound.checkWin()
 
 		if (winInfo.winnerFound) {
@@ -39,7 +39,7 @@ function playerTurn() {
 				gameRound.players[index].wins++;
 				playerWinCounts[index].innerText = `${gameRound.players[index].wins}`		
 				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[index].token} alt=${gameRound.players[index].altText}> <p>won!</p>`
-
+				animateWin()
 				showEndGameDisplay()
 				// setTimeout(startNewGame, 3000)
 		} else if (gameRound.gameBoard.length === 9 && !gameRound.gameBoard.includes(undefined)) {
@@ -53,7 +53,21 @@ function playerTurn() {
 }
 
 function animateWin(){
-	// Locate the 
+	var winSquare = gameRound.checkWin().winningSpaces
+
+	for(var i = 0; i < boardSpaces.length; i++){
+		var space = Number(boardSpaces[i].id)
+		if(!(space === winSquare[0]) && !(space === winSquare[1]) && !(space === winSquare[2])){
+				boardSpaces[i].innerHTML =''
+		} 
+		// else {
+		// 	// add class to image
+		// }
+
+	}
+
+	// grab the tokens
+	//shake/enlarge the tokens --- addd a class?
 }
 
 function startNewGame() {

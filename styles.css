@@ -2,6 +2,13 @@
 	font-family: 'Prompt', sans-serif;
 }
 
+header {
+	display: flex;
+	justify-content: center;
+	height: 30vh;
+	width: 100vw;
+}
+
 body {
 	background-image: linear-gradient(yellow, rgb(255, 168, 6));
 	width: 100vw;
@@ -16,42 +23,41 @@ p {
 	font-size: 20px;
 }
 
-/* Header */
-header {
+.player-status,
+.game-status,
+.turn-display,
+.game-end-display,
+.game-board,
+.board-row,
+.board-space {
 	display: flex;
-	justify-content: space-evenly;
-	height: 30vh;
-	width: 100vw;
+	justify-content: center;
 }
 
-
-.game-status{
- display: flex;
- justify-content: center;
- align-items: center;
- width: 25%;
+.player-status,
+.game-status,
+.game-end-display,
+.game-board,
+.board-space {
+	align-items: center;
 }
 
 .player-status {
-	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 	width: 25%;
 	padding-top: 15px;
 }
+.game-status {
+	width: 25%;
+}
 
-.game-end-display{
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.turn-display {
+	width: 100%;
+}
+
+.game-end-display {
 	width: 100%;
 	height: 100%;
-}
-.turn-display {
-	display: flex;
-	justify-content: center;
-	width: 100%;
 }
 
 .winner-token,
@@ -63,18 +69,13 @@ header {
 	height: 100px;
 }
 
-
-/* Game Board */
 .game-board {
 	background: url(./assets/arena.png) center no-repeat;
 	background-size: 500px;
 	background-position-x: 48%;
 	background-position-y: 52%;
 	overflow: visible;
-	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 	width: 66%;
 	height: 100%;
 }
@@ -82,26 +83,21 @@ header {
 .board-row {
 	width: 490px;
 	height: 135px;
-	display: flex;
-	justify-content: center;
 	margin: 0;
 }
 
 .board-space {
 	aspect-ratio: 1/1;
 	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	cursor: pointer;
-}
-
-.occupied {
-	cursor: default;
 }
 
 .board-token {
 	height: 75px;
+}
+
+.occupied {
+	cursor: default;
 }
 
 .sq-zero,
@@ -128,6 +124,6 @@ header {
 	border-left: 4px darkgray solid;
 }
 
-.hidden{
+.hidden {
 	display: none;
 }

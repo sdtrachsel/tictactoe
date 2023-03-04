@@ -5,7 +5,7 @@ var playerTwoStatusToken = document.getElementById('playerTwoToken')
 var gameBoard = document.getElementById('gameBoard')
 var gameEndDisplay = document.getElementById('gameEndDisplay')
 var turnDisplay = document.getElementById('turnDisplay')
-var boardSpaces = document.querySelectorAll('.js-bs')
+var boardSpaces = document.querySelectorAll('.js-bsq')
 var playerWinCounts = document.querySelectorAll('.win-count')
 
 //Variable
@@ -35,7 +35,7 @@ function playerTurn() {
 				var index = findCurrentPlayerIndex();				
 				gameRound.players[index].wins++;
 				playerWinCounts[index].innerText = `${gameRound.players[index].wins}`		
-				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[index].token} alt=${gameRound.players[index].altText}> won!`
+				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[index].token} alt=${gameRound.players[index].altText}> <p>won!</p>`
 
 				showEndGameDisplay()
 				setTimeout(startNewGame, 3000)

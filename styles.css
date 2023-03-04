@@ -72,41 +72,51 @@ p {
 	height: 100px;
 }
 
-.game-board {
-	/* z-index: 2;
-	position: absolute; */
-	/* top: 30vh; */
-	border: 2px red dashed;
-	background: url(./assets/arena.png) center no-repeat;
-	background-size: 500px;
-	background-position-x: 48%;
-	background-position-y: 52%;
-	overflow: visible;
-	flex-direction: column;
-	width: 66%;
-	height: 100%;
-}
-
-/* .grid-lines {
-	z-index: 1;
-	position: absolute;
-	top: 30vh;
-	
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
+.game-action{
 	border: 4px green solid;
 	background: url(./assets/arena.png) center no-repeat;
 	background-size: 500px;
 	background-position-x: 48%;
 	background-position-y: 52%;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	overflow: visible;
-	flex-direction: column;
+	
 	width: 66%;
 	height: 100%;
-} */
+}
+.game-board {
+	border: 2px red dashed;
+	/* background: url(./assets/arena.png) center no-repeat;
+	background-size: 500px;
+	background-position-x: 48%;
+	background-position-y: 52%; */
+	overflow: visible;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
 
+.winner-display{
+	border: 2px purple solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 60%;
+	
+}
+.winner-big-token{
+	height: 175px;
+	
+}
+
+.winner-text{
+	border: 2px orange solid;
+	font-size:60px ;
+	margin: 5px;
+}
 
 .board-row {
 	width: 490px;
@@ -131,11 +141,11 @@ p {
 }
 
 @keyframes shimmy {
-	0% { transform: rotate(0deg) rotate(0deg); }
-	25% { transform: rotate(5deg) rotate(10deg); }
-	50% { transform: rotate(0eg) rotate(0d)}
-	75% { transform: rotate(-5deg) rotate(-10deg); }
-	100% { transform: rotate(0deg) rotate(0deg); }
+	0% { transform: rotate(0deg); }
+	25% { transform: rotate(10deg); }
+	50% { transform: rotate(0deg); }
+	75% { transform: rotate(-10deg); }
+	100% { transform: rotate(0deg); }	
 }
 
 .occupied {

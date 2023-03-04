@@ -28,27 +28,12 @@
 			<p><span class="win-count">0</span> Wins</p>
 		</section>
 	</header>
-	<!-- div to hold grid lines
-	<div class ='grid-lines'>
-		<div class="board-row">
-			<div class="board-space sq-zero"></div>
-			<div class="board-space sq-one"></div>
-			<div class="board-space sq-two"></div>
-		</div>
-		<div class="board-row">
-			<div class="board-space sq-three"></div>
-			<div class="board-space sq-four" ></div>
-			<div class="board-space sq-five"></div>
-		</div>
-		<div class="board-row">
-			<div class="board-space sq-six"></div>
-			<div class="board-space sq-seven"></div>
-			<div class="board-space sq-eight"></div>
-		</div>
-	</div> -->
-	
-	<!--Token Placment -->
-	<section class="game-board" id="gameBoard">
+	<section class="game-action">
+		<section class="winner-display" id="winnerDisplay">
+			<p class="winner-text">Winner!</p>
+			<img class="winner-big-token" src="./assets/machoman.png" alt="">
+		</section>
+		<section class="game-board hidden" id="gameBoard">
 		<div class="board-row">
 			<div class="js-bsq board-space sq-zero" id="0"></div>
 			<div class="js-bsq board-space sq-one" id="1"></div>
@@ -64,6 +49,7 @@
 			<div class="js-bsq board-space sq-seven" id="7"></div>
 			<div class="js-bsq board-space sq-eight" id="8"></div>
 		</div>
+	</section>
 	</section>
 	<script src="./game.js"></script>
 	<script src="./player.js"></script>

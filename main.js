@@ -2,7 +2,7 @@
 var playerTurnToken = document.getElementById('turnToken')
 var playerOneStatusToken = document.getElementById('playerOneToken')
 var playerTwoStatusToken = document.getElementById('playerTwoToken')
-var gameBoard = document.getElementById('gameBoard')
+var gameBoardDisplay = document.getElementById('gameBoard')
 var gameEndDisplay = document.getElementById('gameEndDisplay')
 var turnDisplay = document.getElementById('turnDisplay')
 var boardSpaces = document.querySelectorAll('.js-bsq')
@@ -13,7 +13,7 @@ var gameRound = new Game(new Player({id:"one", token:"./assets/machoman.png", al
 
 // Eventlisteners
 window.addEventListener('load', loadPlayers)
-gameBoard.addEventListener('click', playerTurn)
+gameBoardDisplay.addEventListener('click', playerTurn)
 
 function loadPlayers() {
 	setToken(playerOneStatusToken, gameRound.players[0])
@@ -63,8 +63,14 @@ function animateWinningTokens(){
 		else {
 			boardSpaces[i].children[0].classList.add('shimmy')
 		}
-
 	}
+}
+
+function declareWinnerDisplay(){
+	// create hidden div that covers gameboard
+	//animate div to roll in
+	//insert winnning text
+	//insert large winner token
 }
 
 function startNewGame() {

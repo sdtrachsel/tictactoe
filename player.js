@@ -5,4 +5,9 @@ class Player {
     this.altText= player.altText;
     this.wins = 0;
   }
+
+  increaseWins(){
+    this.wins++;
+  }
+
 }

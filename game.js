@@ -11,13 +11,13 @@ class Game {
 		} else {
 			this.currentPlayer = this.players[0];
 		}
-		setToken(playerTurnToken, this.currentPlayer)
+		setToken(playerTurnToken, this.currentPlayer);
 	}
 
 	checkWin() {
 		var player = this.currentPlayer;
 
-		var winDetails ={winnerFound: false, winningSpaces:[]}
+		var winDetails ={winnerFound: false, winningSpaces:[]};
 		var winConditions =[
 			[0, 1, 2],
 			[3, 4, 5],
@@ -27,7 +27,7 @@ class Game {
 			[2, 5, 8],
 			[0, 4, 8],
 			[2, 4, 6]
-		]
+		];
 
 		for(var i = 0; i < winConditions.length; i++){
 
@@ -43,8 +43,8 @@ class Game {
 	newGameBoard() {
 		this.gameBoard = [];
 		for (var i = 0; i < boardSpaces.length; i++) {
-			boardSpaces[i].innerHTML = ''
-			boardSpaces[i].classList.remove('occupied')
+			boardSpaces[i].innerHTML = '';
+			boardSpaces[i].classList.remove('occupied');
 		}
 	}
 }

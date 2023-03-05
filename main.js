@@ -2,18 +2,18 @@
 var playerTurnToken = document.getElementById('turnToken')
 var playerOneStatusToken = document.getElementById('playerOneToken')
 var playerTwoStatusToken = document.getElementById('playerTwoToken')
-var gameBoard = document.getElementById('gameBoard')
+var gameBoardDisplay = document.getElementById('gameBoard')
 var gameEndDisplay = document.getElementById('gameEndDisplay')
 var turnDisplay = document.getElementById('turnDisplay')
 var boardSpaces = document.querySelectorAll('.js-bsq')
 var playerWinCounts = document.querySelectorAll('.win-count')
+var winnerDisplay = document.getElementById('winnerDisplay')
 
-//Variable
-var gameRound = new Game(new Player({id:"one", token:"./assets/machoman.png", altText:"player one token Macho Man"}), new Player({id:"two", token:"./assets/ultimatewarrior.png", altText:"player two token Ultimate Warrior"}))
+var gameRound = new Game(new Player({ id: "one", token: "./assets/machoman.png", altText: "player one token Macho Man" }), new Player({ id: "two", token: "./assets/ultimatewarrior.png", altText: "player two token Ultimate Warrior" }))
 
 // Eventlisteners
 window.addEventListener('load', loadPlayers)
-gameBoard.addEventListener('click', playerTurn)
+gameBoardDisplay.addEventListener('click', playerTurn)
 
 function loadPlayers() {
 	setToken(playerOneStatusToken, gameRound.players[0])
@@ -21,7 +21,7 @@ function loadPlayers() {
 	setToken(playerTurnToken, gameRound.currentPlayer)
 }
 
-function setToken(element, player){
+function setToken(element, player) {
 	element.src = `${player.token}`
 	element.alt = `${player.altText}`
 }
@@ -29,16 +29,21 @@ function setToken(element, player){
 function playerTurn() {
 	if (event.target.classList.contains("board-space") && !event.target.classList.contains('occupied')) {
 		placeToken();
-		if (gameRound.checkWin()) {
-				stopTokenPlacement()
 
-				var index = findCurrentPlayerIndex();				
-				gameRound.players[index].wins++;
-				playerWinCounts[index].innerText = `${gameRound.players[index].wins}`		
-				gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[index].token} alt=${gameRound.players[index].altText}> <p>won!</p>`
+		var winInfo = gameRound.checkWin()
 
-				showEndGameDisplay()
-				setTimeout(startNewGame, 3000)
+		if (winInfo.winnerFound) {
+			stopTokenPlacement()
+
+			var index = findCurrentPlayerIndex();
+			gameRound.players[index].wins++;
+			playerWinCounts[index].innerText = `${gameRound.players[index].wins}`
+			gameEndDisplay.innerHTML = `<img class="winner-token" src=${gameRound.players[index].token} alt=${gameRound.players[index].altText}> <p>won!</p>`
+
+			animateWinningTokens()
+			showEndGameDisplay()
+			setTimeout(declareWinner, 1000)
+			setTimeout(startNewGame, 3000)
 		} else if (gameRound.gameBoard.length === 9 && !gameRound.gameBoard.includes(undefined)) {
 			gameEndDisplay.innerHTML = "<p>It's a draw </p>"
 			showEndGameDisplay()
@@ -47,24 +52,6 @@ function playerTurn() {
 			gameRound.changeTurn()
 		}
 	}
-}
-
-function startNewGame() {
-	gameRound.newGameBoard()
-	gameRound.changeTurn()
-	show(turnDisplay)
-	hide(gameEndDisplay)
-}
-
-function stopTokenPlacement() {
-	for (var i = 0; i < boardSpaces.length; i++) {
-		boardSpaces[i].classList.add('occupied')
-	}
-}
-
-function showEndGameDisplay() {
-	show(gameEndDisplay)
-	hide(turnDisplay)
 }
 
 function placeToken() {
@@ -78,21 +65,60 @@ function placeToken() {
 	event.target.appendChild(tokenElement)
 }
 
-function findCurrentPlayerIndex(){
-	var index 
-	for (var i = 0; i < gameRound.players.length; i++){
-		if (gameRound.players[i].id === gameRound.currentPlayer.id){
+function stopTokenPlacement() {
+	for (var i = 0; i < boardSpaces.length; i++) {
+		boardSpaces[i].classList.add('occupied')
+	}
+}
+
+function animateWinningTokens() {
+	var winSquare = gameRound.checkWin().winningSpaces
+
+	for (var i = 0; i < boardSpaces.length; i++) {
+		var space = Number(boardSpaces[i].id)
+		if (!(space === winSquare[0]) && !(space === winSquare[1]) && !(space === winSquare[2])) {
+			boardSpaces[i].innerHTML = ''
+		}
+		else {
+			boardSpaces[i].children[0].classList.add('shimmy')
+		}
+	}
+}
+
+function showEndGameDisplay() {
+	show(gameEndDisplay)
+	hide(turnDisplay)
+}
+
+function declareWinner() {
+	winnerDisplay.children[1].src = gameRound.currentPlayer.token
+	winnerDisplay.children[1].alt = gameRound.currentPlayer.altText
+	hide(gameBoardDisplay)
+	show(winnerDisplay)
+}
+
+function startNewGame() {
+	gameRound.newGameBoard()
+	gameRound.changeTurn()
+	show(turnDisplay)
+	hide(gameEndDisplay)
+	show(gameBoardDisplay)
+	hide(winnerDisplay)
+}
+
+function findCurrentPlayerIndex() {
+	var index
+	for (var i = 0; i < gameRound.players.length; i++) {
+		if (gameRound.players[i].id === gameRound.currentPlayer.id) {
 			index = i;
 		}
 	} return index
 }
 
-function hide(element){
+function hide(element) {
 	element.classList.add('hidden')
 }
 
-function show(element){
+function show(element) {
 	element.classList.remove('hidden')
 }
-
-//** Add finger hover over board spaces */

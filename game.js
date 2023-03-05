@@ -15,20 +15,29 @@ class Game {
 	}
 
 	checkWin() {
-		var winnerFound = false;
 		var player = this.currentPlayer;
 
-		if ((this.gameBoard[0] === player && this.gameBoard[1] === player && this.gameBoard[2] === player) ||
-			(this.gameBoard[3] === player && this.gameBoard[4] === player && this.gameBoard[5] === player) ||
-			(this.gameBoard[6] === player && this.gameBoard[7] === player && this.gameBoard[8] === player) ||
-			(this.gameBoard[0] === player && this.gameBoard[3] === player && this.gameBoard[6] === player) ||
-			(this.gameBoard[1] === player && this.gameBoard[4] === player && this.gameBoard[7] === player) ||
-			(this.gameBoard[2] === player && this.gameBoard[5] === player && this.gameBoard[8] === player) ||
-			(this.gameBoard[0] === player && this.gameBoard[4] === player && this.gameBoard[8] === player) ||
-			(this.gameBoard[2] === player && this.gameBoard[4] === player && this.gameBoard[6] === player)) {
-			winnerFound = true;
+		var winDetails ={winnerFound: false, winningSpaces:[]}
+		var winConditions =[
+			[0, 1, 2],
+			[3, 4, 5],
+			[6, 7, 8],
+			[0, 3, 6],
+			[1, 4, 7],
+			[2, 5, 8],
+			[0, 4, 8],
+			[2, 4, 6]
+		]
+
+		for(var i = 0; i < winConditions.length; i++){
+
+			if(this.gameBoard[winConditions[i][0]] === player && this.gameBoard[winConditions[i][1]] === player && this.gameBoard[winConditions[i][2]] === player){
+
+				winDetails.winnerFound = true;
+				winDetails.winningSpaces = winConditions[i];
+			}
 		}
-		return winnerFound
+		return winDetails
 	}
 
 	newGameBoard() {

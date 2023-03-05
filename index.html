@@ -28,7 +28,12 @@
 			<p><span class="win-count">0</span> Wins</p>
 		</section>
 	</header>
-	<section class="game-board" id="gameBoard">
+	<section class="game-action">
+		<section class="winner-display hidden" id="winnerDisplay">
+			<p class="winner-text">Winner!</p>
+			<img class="winner-big-token" src="" alt="">
+		</section>
+		<section class="game-board" id="gameBoard">
 		<div class="board-row">
 			<div class="js-bsq board-space sq-zero" id="0"></div>
 			<div class="js-bsq board-space sq-one" id="1"></div>
@@ -45,9 +50,9 @@
 			<div class="js-bsq board-space sq-eight" id="8"></div>
 		</div>
 	</section>
+	</section>
 	<script src="./game.js"></script>
 	<script src="./player.js"></script>
 	<script src="./main.js"></script>
 </body>
-
 </html>

@@ -3,8 +3,6 @@
 }
 
 header {
-	display: flex;
-	justify-content: center;
 	height: 30vh;
 	width: 100vw;
 }
@@ -16,31 +14,18 @@ body {
 	margin: 0;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 }
 
 p {
 	font-size: 20px;
 }
 
-.player-status,
-.game-status,
-.turn-display,
-.game-end-display,
-.game-action,
-.game-board,
-.board-row,
-.board-space {
+.flex-just-cent {
 	display: flex;
 	justify-content: center;
 }
 
-.player-status,
-.game-status,
-.game-end-display,
-.game-action,
-.game-board,
-.board-space {
+.align-itm-cent {
 	align-items: center;
 }
 
@@ -65,14 +50,14 @@ p {
 
 .winner-token,
 .turn-token {
-	height: 60px;
+	height: 110px;
 }
 
 .status-token {
-	height: 100px;
+	height: 75px;
 }
 
-.game-action{
+.game-action {
 	background: url(./assets/arena.png) center no-repeat;
 	background-size: 500px;
 	background-position-x: 48%;
@@ -102,12 +87,12 @@ p {
 	overflow: visible;
 }
 
-.board-token {
-	height: 75px;
-}
-
 .occupied {
 	cursor: default;
+}
+
+.board-token {
+	height: 75px;
 }
 
 .sq-zero,
@@ -134,20 +119,19 @@ p {
 	border-left: 4px darkgray solid;
 }
 
-.winner-display{
+.winner-display {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	height: 60%;
-	
 }
 
-.winner-big-token{
+.winner-big-token {
 	height: 175px;
 }
 
-.winner-text{
-	font-size:60px ;
+.winner-text {
+	font-size: 60px;
 	margin: 5px;
 }
 

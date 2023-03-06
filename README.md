@@ -12,8 +12,7 @@ Enjoy some late 80s wrestling nostlagia while playing the classic game Tic-Tac-T
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
 
-
-
+![tictactoe preview](https://user-images.githubusercontent.com/122052199/223210271-dc23b95f-deed-4f95-a180-cc2bd6ea7de7.gif)
 
 
 

@@ -28,7 +28,7 @@ function setToken(element, player) {
 }
 
 function playerTurn() {
-	if (event.target.classList.contains("board-space") && !event.target.classList.contains('occupied')) {
+	if (event.target.classList.contains('board-space') && !event.target.classList.contains('occupied')) {
 		placeToken();
 		if (gameRound.checkWin().winnerFound) {
 			stopTokenPlacement();
@@ -50,6 +50,7 @@ function playerTurn() {
 			setTimeout(startNewGame, 3000);
 		} else {
 			gameRound.changeTurn();
+			setToken(playerTurnToken, gameRound.currentPlayer);
 		}
 	}
 }
@@ -73,7 +74,6 @@ function stopTokenPlacement() {
 
 function animateWinningTokens() {
 	var winSquare = gameRound.checkWin().winningSpaces;
-
 	for (var i = 0; i < boardSpaces.length; i++) {
 		var space = Number(boardSpaces[i].id)
 		if (!(space === winSquare[0]) && !(space === winSquare[1]) && !(space === winSquare[2])) {
@@ -99,7 +99,13 @@ function declareWinner() {
 
 function startNewGame() {
 	gameRound.newGameBoard();
+
+	for (var i = 0; i < boardSpaces.length; i++) {
+		boardSpaces[i].innerHTML = '';
+		boardSpaces[i].classList.remove('occupied');
+	}
 	gameRound.changeTurn();
+	setToken(playerTurnToken, gameRound.currentPlayer);
 	show(turnDisplay);
 	hide(gameEndDisplay);
 	show(gameBoardDisplay);

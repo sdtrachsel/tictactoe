@@ -11,7 +11,6 @@ class Game {
 		} else {
 			this.currentPlayer = this.players[0];
 		}
-		setToken(playerTurnToken, this.currentPlayer);
 	}
 
 	checkWin() {
@@ -30,7 +29,6 @@ class Game {
 		];
 
 		for(var i = 0; i < winConditions.length; i++){
-
 			if(this.gameBoard[winConditions[i][0]] === player && this.gameBoard[winConditions[i][1]] === player && this.gameBoard[winConditions[i][2]] === player){
 
 				winDetails.winnerFound = true;
@@ -42,9 +40,5 @@ class Game {
 
 	newGameBoard() {
 		this.gameBoard = [];
-		for (var i = 0; i < boardSpaces.length; i++) {
-			boardSpaces[i].innerHTML = '';
-			boardSpaces[i].classList.remove('occupied');
-		}
 	}
 }

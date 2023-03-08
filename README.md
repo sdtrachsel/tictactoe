@@ -4,14 +4,15 @@
 Enjoy some late 80s wrestling nostlagia while playing the classic game Tic-Tac-Toe as Macho Man vs Ultimate Warrior. You can play with a friend or vs yourself. You can do best 2 out of 3 or 501 out of 1,000 with the game tracking the ultimate winner.  
 
 ### Installation Instructions:
+Play Tic-Tac-Toe online: https://sdtrachsel.github.io/tictactoe/
+
+Play Tic-Tac-Toe from your computer:
 1. Open the repo in Github: https://github.com/sdtrachsel/tictactoe
 1. Use the terminal to clone the repository to your local machine
 1. Navigate into the project directory
 1. Run the command `open index.html` to open the app in your browser
 
 ### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
-
 ![tictactoe preview](https://user-images.githubusercontent.com/122052199/223210271-dc23b95f-deed-4f95-a180-cc2bd6ea7de7.gif)
 
 
